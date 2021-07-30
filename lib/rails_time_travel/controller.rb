@@ -14,7 +14,7 @@ module RailsTimeTravel
 
     def time_travel
       if session[:timecop_date]
-        logger.info "TIME TRAVEL START: #{session[:timecop_date]}"
+        logger.info "TIME TRAVEL START: #{Time.zone.at(session[:timecop_date])}"
         Timecop.travel(session[:timecop_date])
       else
         Timecop.return
