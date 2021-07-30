@@ -10,7 +10,7 @@ module RailsTimeTravel
         Timecop.return
         session.delete(:timecop_date)
       else
-        session[:timecop_date] = params[:seconds].to_i.seconds.ago
+        session[:timecop_date] = params[:direction] == "future" ? Time.zone.now + params[:seconds].to_i : params[:seconds].to_i.seconds.ago
       end
       redirect_to action: :index
     end

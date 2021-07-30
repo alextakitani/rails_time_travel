@@ -22,29 +22,66 @@
   <p class="title"><%= Time.now %></p>
 </section>
 
-<div class="buttons">
-  <% [5, 10, 20, 30, 40, 50, 60].each do |e| %>
-    <%= button_to "-#{pluralize e, 'second'}", { action: :set_datetime, seconds: e.seconds.to_i }, { class: "button is-light" } %>
-  <% end %>
-</div>
+<article class="panel is-primary">
+  <p class="panel-heading">
+    Back to the past
+  </p>
 
-<div class="buttons">
-  <% [1, 2, 5, 10, 20, 30, 50, 60, 100].each do |e| %>
-    <%= button_to "-#{pluralize e, 'minute'}", { action: :set_datetime, seconds: e.minutes.to_i }, { class: "button is-info" } %>
-  <% end %>
-</div>
+  <div class="buttons">
+    <% [5, 10, 20, 30, 40, 50, 60].each do |e| %>
+      <%= button_to "-#{pluralize e, 'second'}", { action: :set_datetime, seconds: e.seconds.to_i }, { class: "button is-light" } %>
+    <% end %>
+  </div>
 
-<div class="buttons">
-  <% [1, 2, 5, 10, 20, 30, 50, 100, 365].each do |e| %>
-    <%= button_to "-#{pluralize e, 'day'}", { action: :set_datetime, seconds: e.days.to_i }, { class: "button is-success" } %>
-  <% end %>
-</div>
+  <div class="buttons">
+    <% [1, 2, 5, 10, 20, 30, 50, 60, 100].each do |e| %>
+      <%= button_to "-#{pluralize e, 'minute'}", { action: :set_datetime, seconds: e.minutes.to_i }, { class: "button is-info" } %>
+    <% end %>
+  </div>
 
-<div class="buttons">
-  <% [1, 2, 3, 5].each do |e| %>
-    <%= button_to "-#{pluralize e, 'year'}", { action: :set_datetime, seconds: e.year.to_i }, { class: "button is-warning" } %>
-  <% end %>
-</div>
+  <div class="buttons">
+    <% [1, 2, 5, 10, 20, 30, 50, 100, 365].each do |e| %>
+      <%= button_to "-#{pluralize e, 'day'}", { action: :set_datetime, seconds: e.days.to_i }, { class: "button is-success" } %>
+    <% end %>
+  </div>
+
+  <div class="buttons">
+    <% [1, 2, 3, 5].each do |e| %>
+      <%= button_to "-#{pluralize e, 'year'}", { action: :set_datetime, seconds: e.year.to_i }, { class: "button is-warning" } %>
+    <% end %>
+  </div>
+</article>
+
+<article class="panel is-primary">
+  <p class="panel-heading">
+    Back to the future
+  </p>
+
+  <div class="buttons">
+    <% [5, 10, 20, 30, 40, 50, 60].each do |e| %>
+      <%= button_to "+#{pluralize e, 'second'}", { action: :set_datetime, seconds: e.seconds.to_i, direction: :future }, { class: "button is-light" } %>
+    <% end %>
+  </div>
+
+  <div class="buttons">
+    <% [1, 2, 5, 10, 20, 30, 50, 60, 100].each do |e| %>
+      <%= button_to "+#{pluralize e, 'minute'}", { action: :set_datetime, seconds: e.minutes.to_i, direction: :future }, { class: "button is-info" } %>
+    <% end %>
+  </div>
+
+  <div class="buttons">
+    <% [1, 2, 5, 10, 20, 30, 50, 100, 365].each do |e| %>
+      <%= button_to "+#{pluralize e, 'day'}", { action: :set_datetime, seconds: e.days.to_i, direction: :future }, { class: "button is-success" } %>
+    <% end %>
+  </div>
+
+  <div class="buttons">
+    <% [1, 2, 3, 5].each do |e| %>
+      <%= button_to "+#{pluralize e, 'year'}", { action: :set_datetime, seconds: e.year.to_i, direction: :future }, { class: "button is-warning" } %>
+    <% end %>
+  </div>
+</article>
+
 
 <% if session[:timecop_date].present? %>
   <div class="buttons">
