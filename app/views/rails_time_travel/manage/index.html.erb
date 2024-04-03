@@ -29,7 +29,7 @@
   <div class="panel-block">
 
     <div class="buttons">
-      <% [5, 10, 20, 30, 40, 50, 60].each do |e| %>
+      <% (5..60).step(5).each do |e| %>
         <%= button_to "-#{pluralize e, 'second'}", { action: :set_datetime, seconds: e.seconds.to_i }, { class: "button is-light" } %>
       <% end %>
     </div>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="buttons">
-      <% [1, 2, 5, 10, 20, 30, 50, 100, 365].each do |e| %>
+      <% [1, 2, 5, 10, 20, 30, 35, 50, 100, 365].each do |e| %>
         <%= button_to "-#{pluralize e, 'day'}", { action: :set_datetime, seconds: e.days.to_i }, { class: "button is-success" } %>
       <% end %>
     </div>
