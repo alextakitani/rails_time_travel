@@ -62,7 +62,7 @@
   <div class="panel-block">
 
   <div class="buttons">
-    <% <% (5..60).step(5).each do |e| %>
+    <% (5..60).step(5).each do |e| %>
       <%= button_to "+#{pluralize e, 'second'}", { action: :set_datetime, seconds: e.seconds.to_i, direction: :future }, { class: "button is-light" } %>
     <% end %>
   </div>
