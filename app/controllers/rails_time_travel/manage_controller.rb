@@ -6,12 +6,20 @@ module RailsTimeTravel
     end
 
     def set_datetime
-      if params[:seconds] == "reset"
-        Timecop.return
-        session.delete(:timecop_date)
-      else
-        session[:timecop_date] = params[:direction] == "future" ? params[:seconds].to_i.seconds : params[:seconds].to_i.seconds.ago
+      if params[:seconds].present?
+        if params[:seconds] == "reset"
+          Timecop.return
+          session.delete(:timecop_date)
+        else
+          seconds = params[:seconds].to_i
+          session[:timecop_date] = params[:direction] == "future" ? Time.now + seconds.seconds : Time.now - seconds.seconds
+        end
       end
+
+      if params[:date].present?
+        session[:timecop_date] = Time.parse(params[:date])
+      end
+
       redirect_to action: :index
     end
   end
